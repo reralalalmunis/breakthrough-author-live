@@ -2,6 +2,16 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<script>
+  // Apply saved theme before first paint to avoid a flash of the wrong mode.
+  (function () {
+    try {
+      if (localStorage.getItem("bal-theme") === "light") {
+        document.documentElement.setAttribute("data-theme", "light");
+      }
+    } catch (e) { /* localStorage unavailable — default theme applies */ }
+  })();
+</script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Breakthrough Author Live — Write Your Bestselling Book in 4 Weeks</title>
 <meta name="description" content="The 4-Week Challenge for Coaches. Write your bestselling book and use it to land $10K-$50K coaching clients. 500+ coaches. 108 bestsellers and counting.">
@@ -18,16 +28,27 @@
 <header class="site-header">
   <div class="container header-inner">
     <a href="#top" class="logo">Breakthrough Author <span class="logo-accent">Live</span></a>
-    <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="mobileNav" aria-label="Open menu">
-      <span></span><span></span><span></span>
-    </button>
-    <nav class="desktop-nav" aria-label="Primary">
-      <a href="#program">Program</a>
-      <a href="#results">Results</a>
-      <a href="#pricing">Pricing</a>
-      <a href="#faq">FAQ</a>
-      <a class="btn btn-gold btn-sm" href="#checkout-placeholder">Join — $47</a>
-    </nav>
+    <div class="header-controls">
+      <nav class="desktop-nav" aria-label="Primary">
+        <a href="#program">Program</a>
+        <a href="#results">Results</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#faq">FAQ</a>
+        <a class="btn btn-gold btn-sm" href="#checkout-placeholder">Join — $47</a>
+      </nav>
+      <button class="theme-toggle" id="themeToggle" type="button" aria-pressed="false" aria-label="Switch to light mode">
+        <svg class="theme-icon theme-icon--sun" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="currentColor">
+          <circle cx="12" cy="12" r="4.5"/>
+          <path d="M12 1.8v3M12 19.2v3M4.93 4.93l2.12 2.12M16.95 16.95l2.12 2.12M1.8 12h3M19.2 12h3M4.93 19.07l2.12-2.12M16.95 7.05l2.12-2.12" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+        </svg>
+        <svg class="theme-icon theme-icon--moon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="currentColor">
+          <path d="M20.8 14.5A8.4 8.4 0 1 1 9.5 3.2a7 7 0 0 0 11.3 11.3z"/>
+        </svg>
+      </button>
+      <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="mobileNav" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
   </div>
   <nav class="mobile-nav" id="mobileNav" aria-label="Mobile">
     <a href="#program">Program</a>
